@@ -6,7 +6,7 @@ class CinemaParser:
     def __init__(self, town='msk'):
         '''Выбор города'''
         self.city = town
-        self.content = []
+        self.content = None
     def extract_raw_content(self):
         '''Доставание информации со страницы'''
         inf = requests.get('https://{}.subscity.ru/'.format(self.city))
