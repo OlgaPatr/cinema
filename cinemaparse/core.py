@@ -15,6 +15,17 @@ class CinemaParser:
         '''Вывод информации со страницы'''
         soup = BeautifulSoup(self.content)
         print(soup.prettify())
+
+    def get_films_list(self):
+        '''Достаёт названия фильмов со страницы'''
+        soup = BeautifulSoup(self.content, 'html.parser')
+        films = []
+        for i in soup.find_all(class_="movie-plate"):
+            films.append(i["attr-title"])
+        print(films)
+        return films
+
 SPB_PARSER = CinemaParser('spb')
 SPB_PARSER.extract_raw_content()
-SPB_PARSER.print_raw_content()
+SPB_PARSER.get_films_list()
+#SPB_PARSER.print_raw_content()
